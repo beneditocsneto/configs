@@ -53,6 +53,9 @@ environment:
   alias: DSV
 
 integration:
+  pucrs:
+    convertion:
+      url: http://localhost:8081/ws-integrador-contabil
   linx:
     url-base: https://webapi.microvix.com.br/1.0/api/integracao
     methods:
