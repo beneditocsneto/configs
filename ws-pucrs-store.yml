@@ -30,7 +30,7 @@ spring:
       max-lifetime: 300000
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
       
 app:
   cors:
