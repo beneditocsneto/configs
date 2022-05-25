@@ -28,6 +28,9 @@ spring:
     hikari:
       maximum-pool-size: 5
       max-lifetime: 300000
+  jpa:
+    hibernate:
+      ddl-auto: update
       
 app:
   cors:
