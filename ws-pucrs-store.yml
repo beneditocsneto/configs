@@ -1,90 +1,6 @@
-# server:
-#   servlet:
-#     context-path: /ws-pucrs-store
-    
-# #Actuator config
-# management:
-#   endpoints:
-#     web:
-#       exposure:
-#         include: "*"
-
-# swagger:
-#   enable: false
-
-# spring:
-#   security:
-#       user:
-#         name: ADMIN
-#         password: ADMIN
-#   jackson:
-#     deserialization:
-#       fail-on-unknown-properties: true
-#   datasource:
-#     url: jdbc:mariadb://localhost:3306/PUCRSSTORE_ADMIN
-#     username: root
-#     password: s3nh4
-#     driver-class-name: org.mariadb.jdbc.Driver
-#     hikari:
-#       maximum-pool-size: 5
-#       max-lifetime: 300000
-#   jpa:
-#     hibernate:
-#       ddl-auto: update
-      
-# app:
-#   cors:
-#     granted:
-#       urls: http://localhost:4200, http://webapdsv.pucrs.br, https://webapdsv.pucrs.br
-
-# logging:
-#   file: ./log/ws-pucrs-store.log
-#   pattern:
-#     file: "%d{dd-MM-yyyy HH:mm:ss} %-5level [%thread] %logger{0} : %msg%n"
-#     console: "%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{0} : %msg%n"
-#   level:
-#     org:
-#       springframework:
-#         web: DEBUG
-#       hibernate: DEBUG
-
-# environment:
-#   base-url: http://webapdsv.pucrs.br
-#   alias: DSV
-
-# integration:
-#   pucrs:
-#     convertion:
-#       url: http://localhost:8081/ws-integrador-contabil
-#   linx:
-#     url-base: https://webapi.microvix.com.br/1.0/api/integracao
-#     methods:
-#       method1:
-#         method-name: LinxMovimento
-#         keys: chave, cnpjEmp, timestamp, data_inicial, data_fim
-#         values: value1, value2, value3, value4, value5
-#         table: PSA_LNX_MOVIMENTO
-#         active: true
-#       method2:
-#         method-name: LinxClientesFornec
-#         keys: chave, cnpjEmp, data_inicial, data_fim
-#         values: value1, value2, value3, value4
-#         table: PSA_LNX_CLIENTES_FORNEC
-#         active: true
-
-# # Configurações temporárias - início
-# temporary-jobs:
-#   linx:
-#     cron: 0 0/50 * * * ?
-#     active: false
-#   matera:
-#     cron: 0 0/50 * * * ?
-#     active: false
-# # Configurações temporárias - fim
-#
 server:
   servlet:
-    context-path: /ws-integrador-contabil
+    context-path: /ws-pucrs-store
     
 #Actuator config
 management:
@@ -94,7 +10,7 @@ management:
         include: "*"
 
 swagger:
-  enable: true
+  enable: false
 
 spring:
   security:
@@ -105,7 +21,7 @@ spring:
     deserialization:
       fail-on-unknown-properties: true
   datasource:
-    url: jdbc:mariadb://localhost:3306/INTEGRADOR_CONTABIL
+    url: jdbc:mariadb://localhost:3306/PUCRSSTORE_ADMIN
     username: root
     password: s3nh4
     driver-class-name: org.mariadb.jdbc.Driver
@@ -115,7 +31,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
+      
 app:
   cors:
     granted:
@@ -135,3 +51,32 @@ logging:
 environment:
   base-url: http://webapdsv.pucrs.br
   alias: DSV
+
+integration:
+  pucrs:
+    convertion:
+      url: http://localhost:8081/ws-integrador-contabil
+  linx:
+    url-base: https://webapi.microvix.com.br/1.0/api/integracao
+    methods:
+      method1:
+        method-name: LinxMovimento
+        keys: chave, cnpjEmp, timestamp, data_inicial, data_fim
+        values: value1, value2, value3, value4, value5
+        table: PSA_LNX_MOVIMENTO
+        active: true
+      method2:
+        method-name: LinxClientesFornec
+        keys: chave, cnpjEmp, data_inicial, data_fim
+        values: value1, value2, value3, value4
+        table: PSA_LNX_CLIENTES_FORNEC
+        active: true
+
+# Configurações temporárias - início
+temporary-jobs:
+  linx:
+    cron: 0 0/50 * * * ?
+    active: false
+  matera:
+    cron: 0 0/50 * * * ?
+    active: false
